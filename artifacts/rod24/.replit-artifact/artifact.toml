@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ROD24 Ride Booking"
+description = "A responsive ride-hailing website for ROD24 with Bihar-focused route discovery, local ride booking, mock cab estimates, and a complete demo verification flow."
+version = "1.0.0"
+id = "artifacts/rod24"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20371
+
+[services.development]
+run = "pnpm --filter @workspace/rod24 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rod24", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rod24/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20371"
+BASE_PATH = "/"

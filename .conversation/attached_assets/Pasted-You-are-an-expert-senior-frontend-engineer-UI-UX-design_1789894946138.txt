@@ -1,0 +1,1463 @@
+You are an expert senior frontend engineer, UI/UX designer, Next.js developer, and conversion-focused website architect.
+
+Build a COMPLETE, PRODUCTION-QUALITY, MODERN WEBSITE for ROD24, a cab and ride-booking platform.
+
+IMPORTANT:
+- Use Next.js with App Router.
+- Use JAVASCRIPT only.
+- DO NOT use TypeScript.
+- No .ts or .tsx files.
+- Use .js and .jsx only.
+- Use Tailwind CSS.
+- Use Framer Motion for animations where appropriate.
+- Use Lucide React for icons.
+- The website must be fully responsive.
+- The code must be clean, modular and production-ready.
+- Do not create a simple landing page. Build a full-fledged ROD24 website with a working booking flow.
+- Use mock/local data where backend APIs are not yet available.
+- Structure the code so real ROD24 APIs can easily replace mock data later.
+
+==================================================
+1. BRAND
+==================================================
+
+Brand:
+ROD24
+
+Meaning/positioning:
+ROD24 is a modern cab booking platform focused on comfortable, affordable, reliable and hassle-free rides.
+
+Brand personality:
+- Modern
+- Trustworthy
+- Affordable
+- Fast
+- Comfortable
+- Local + Outstation
+- Technology-driven
+- Indian but globally scalable
+
+Primary colors:
+
+Deep Navy:
+#071A33
+
+Secondary Navy:
+#0D2A4A
+
+Saffron / Orange:
+#F59E0B
+
+Bright Orange:
+#FF8A00
+
+White:
+#FFFFFF
+
+Light Background:
+#F7F9FC
+
+Dark Text:
+#111827
+
+Muted Text:
+#64748B
+
+Use NAVY BLUE as the primary brand foundation.
+
+Use SAFFRON/ORANGE strategically for:
+- CTA buttons
+- highlights
+- active states
+- booking buttons
+- important numbers
+- selected tabs
+- small decorative elements
+
+Do NOT make the entire website orange.
+
+The visual style should feel similar to a premium modern mobility/transportation startup.
+
+==================================================
+2. WEBSITE OBJECTIVE
+==================================================
+
+The website should:
+
+1. Allow users to understand ROD24 quickly.
+2. Allow users to search/book a cab.
+3. Provide a complete booking form.
+4. Verify users through a STATIC OTP.
+5. Show proper validation.
+6. Show a wrong OTP modal.
+7. Display popular routes.
+8. Explain ROD24 services.
+9. Build trust through statistics and features.
+10. Be highly SEO optimized.
+11. Be extremely mobile friendly.
+12. Work well on slow/low-network connections.
+13. Be structured for future API integration.
+
+==================================================
+3. TECHNOLOGY STACK
+==================================================
+
+Use:
+
+Next.js
+JavaScript
+React
+App Router
+Tailwind CSS
+Framer Motion
+Lucide React
+
+Do NOT use:
+
+TypeScript
+.ts
+.tsx
+Expo
+Angular
+Vue
+
+Preferred structure:
+
+/app
+/components
+/data
+/lib
+/public
+/styles
+
+Use reusable components.
+
+==================================================
+4. WEBSITE PAGES
+==================================================
+
+Create these pages:
+
+/
+Home
+
+/book
+Booking page
+
+/rides
+Ride services
+
+/outstation
+Outstation rides
+
+/airport
+Airport transfers
+
+/local
+Local rides
+
+/routes
+Popular routes
+
+/about
+About ROD24
+
+/contact
+Contact ROD24
+
+/terms
+Terms and Conditions
+
+/privacy
+Privacy Policy
+
+/cancellation-policy
+Cancellation Policy
+
+Also create dynamic SEO route pages where appropriate:
+
+/routes/patna-to-gaya
+/routes/patna-to-muzaffarpur
+/routes/patna-to-darbhanga
+/routes/patna-to-bhagalpur
+/routes/saharsa-to-patna
+/routes/darbhanga-to-raxaul
+
+Use reusable route page components.
+
+==================================================
+5. HEADER
+==================================================
+
+Create a premium sticky header.
+
+Desktop:
+
+ROD24 logo on left.
+
+Navigation:
+
+Home
+Rides
+Outstation
+Airport
+Popular Routes
+About
+Contact
+
+Right side:
+
+Location selector:
+"Bihar"
+
+CTA:
+"Book a Cab"
+
+Header behavior:
+- transparent/overlay on hero initially
+- transitions into solid white/navy background on scroll
+- subtle shadow
+- smooth animation
+
+Mobile:
+
+ROD24 logo
+hamburger menu
+
+Mobile menu should slide in smoothly.
+
+Use Lucide icons.
+
+==================================================
+6. HERO SECTION
+==================================================
+
+Create a visually impressive animated hero.
+
+Hero headline:
+
+"Your Ride. Your Way. With ROD24."
+
+Alternative supporting headline:
+
+"Comfortable, Affordable & Reliable Rides — Wherever You Go."
+
+Hero should communicate:
+
+LOCAL
+OUTSTATION
+AIRPORT
+FLEXI RIDES
+
+Hero layout:
+
+Left:
+- small badge: "Bihar's Smart Mobility Partner"
+- large headline
+- supporting paragraph
+- CTA buttons
+
+Primary CTA:
+"Book a Cab"
+
+Secondary CTA:
+"Explore Rides"
+
+Right:
+Create a beautiful animated mobility visual.
+
+Possible visual:
+
+Premium cab/MPV illustration or realistic-looking vehicle image
+floating over a subtle Bihar/map-inspired background.
+
+Add animated:
+- location pins
+- route line
+- destination marker
+- small floating fare card
+- ETA card
+- "Driver arriving" card
+
+Animations should be subtle and premium.
+
+Use Framer Motion.
+
+Avoid excessive animation.
+
+Hero should load quickly.
+
+Use optimized images.
+
+==================================================
+7. HERO BOOKING WIDGET
+==================================================
+
+Place a modern booking card overlapping/below the hero.
+
+Tabs:
+
+One Way
+Round Trip
+Airport
+Local
+Rental/Flexi
+
+Default:
+One Way
+
+Booking form:
+
+Pickup Location
+Destination
+Date
+Time
+Passengers
+
+CTA:
+
+"Search Cabs"
+
+Pickup and Destination MUST come from a LOCAL JSON LOCATION FILE.
+
+Do NOT hardcode locations directly inside components.
+
+==================================================
+8. LOCATION JSON
+==================================================
+
+Create:
+
+/data/locations.json
+
+Example structure:
+
+[
+  {
+    "id": "patna",
+    "name": "Patna",
+    "state": "Bihar",
+    "country": "India",
+    "latitude": 25.5941,
+    "longitude": 85.1376,
+    "popular": true
+  },
+  {
+    "id": "gaya",
+    "name": "Gaya",
+    "state": "Bihar",
+    "country": "India",
+    "latitude": 24.7914,
+    "longitude": 85.0002,
+    "popular": true
+  }
+]
+
+Initially include at least 30-50 useful Bihar locations.
+
+Include cities such as:
+
+Patna
+Gaya
+Muzaffarpur
+Darbhanga
+Bhagalpur
+Purnea
+Saharsa
+Supaul
+Madhepura
+Begusarai
+Ara
+Buxar
+Chapra
+Siwan
+Motihari
+Raxaul
+Bettiah
+Katihar
+Kishanganj
+Samastipur
+Munger
+Nalanda
+Rajgir
+Jehanabad
+Aurangabad
+Dehri
+Sasaram
+Hajipur
+Sitamarhi
+Madhubani
+Khagaria
+Jamui
+Lakhisarai
+Bihar Sharif
+Araria
+Forbesganj
+and other major Bihar locations.
+
+Design the location data so more locations can easily be added later.
+
+==================================================
+9. LOCATION SEARCH COMPONENT
+==================================================
+
+Create reusable:
+
+LocationSearch.jsx
+
+Features:
+
+- Search locations from locations.json
+- autocomplete
+- keyboard-friendly
+- popular locations
+- recent selections
+- location icon
+- clear button
+- dropdown animation
+- "No location found" state
+
+Search should be fast.
+
+Use local filtering.
+
+Do not call an API.
+
+Pickup and Destination must use the same reusable component.
+
+Prevent selecting the same pickup and destination.
+
+Show validation if they are identical.
+
+==================================================
+10. BOOKING FLOW
+==================================================
+
+Build a complete booking flow.
+
+STEP 1
+
+User selects:
+
+Pickup
+Destination
+Date
+Time
+Passengers
+
+Click:
+
+"Search Cabs"
+
+STEP 2
+
+Show available cab options.
+
+Example:
+
+ROD24 Mini
+4 Seats
+2 Bags
+
+Estimated Fare:
+₹999
+
+ETA:
+10 min
+
+ROD24 Sedan
+4 Seats
+3 Bags
+
+Estimated Fare:
+₹1,299
+
+ROD24 SUV
+6 Seats
+4 Bags
+
+Estimated Fare:
+₹1,799
+
+These can initially be MOCK DATA.
+
+Clearly structure the code so this can later be replaced by:
+
+GET /api/v1/booking/estimate
+
+==================================================
+11. FARE DISPLAY
+==================================================
+
+Show:
+
+Base Fare
+Distance
+Estimated Time
+Taxes/Charges
+Total Estimated Fare
+
+Example:
+
+Base Fare          ₹800
+Distance Charges   ₹150
+Taxes              ₹49
+------------------------
+Estimated Total    ₹999
+
+Include:
+
+"Final fare may vary based on actual distance, route and applicable charges."
+
+Do not claim exact pricing unless it comes from an API.
+
+==================================================
+12. BOOKING CONFIRMATION
+==================================================
+
+After selecting a cab:
+
+Show booking summary.
+
+Pickup
+Destination
+Date
+Time
+Cab type
+Estimated fare
+
+Button:
+
+"Continue"
+
+Then ask for:
+
+Mobile Number
+
+Country code:
+
++91
+
+Input:
+
+10 digit mobile number.
+
+Validation:
+
+- required
+- exactly 10 digits
+- numbers only
+
+Button:
+
+"Send OTP"
+
+==================================================
+13. STATIC OTP SYSTEM
+==================================================
+
+IMPORTANT:
+
+This is a DEMO booking website.
+
+Do NOT integrate real SMS OTP yet.
+
+Use a STATIC OTP:
+
+1234
+
+When user enters mobile number and clicks "Send OTP":
+
+Open OTP verification step/modal.
+
+Message:
+
+"Enter the 4-digit OTP sent to +91 XXXXX XXXXX"
+
+For demo:
+
+OTP is always:
+
+1234
+
+Add:
+
+Resend OTP
+
+Countdown:
+
+00:30
+
+After countdown:
+
+"Resend OTP"
+
+==================================================
+14. WRONG OTP MODAL
+==================================================
+
+If the user enters anything other than:
+
+1234
+
+show a beautiful modal.
+
+Title:
+
+"Incorrect OTP"
+
+Message:
+
+"The OTP you entered is incorrect. Please try again."
+
+Buttons:
+
+"Try Again"
+
+"Change Number"
+
+Use Framer Motion.
+
+Modal should have:
+
+warning/error icon
+clear message
+smooth scale/fade animation
+
+Do not use browser alert().
+
+==================================================
+15. CORRECT OTP
+==================================================
+
+If OTP is:
+
+1234
+
+show:
+
+"Mobile number verified successfully."
+
+Then continue to booking confirmation.
+
+Show:
+
+Booking Confirmed
+
+Booking ID:
+
+Generate a mock booking ID such as:
+
+ROD24-2026-XXXXXX
+
+Display:
+
+Pickup
+Destination
+Date
+Time
+Cab
+Estimated Fare
+Mobile number
+
+CTA:
+
+"View Booking"
+
+"Back to Home"
+
+==================================================
+16. BOOKING SUCCESS SCREEN
+==================================================
+
+Create a premium success page.
+
+Large animated check icon.
+
+Headline:
+
+"Your Ride is Confirmed!"
+
+Supporting:
+
+"Your ROD24 ride has been successfully booked."
+
+Show booking card.
+
+Include:
+
+Booking ID
+Pickup
+Destination
+Date
+Time
+Vehicle
+Fare
+Passenger
+
+Buttons:
+
+"View Booking"
+"Book Another Ride"
+
+==================================================
+17. SERVICES SECTION
+==================================================
+
+Create a premium services section.
+
+Cards:
+
+Local Rides
+One Way
+Outstation
+Airport Transfers
+Flexi Rides
+Corporate Travel
+
+Each card should contain:
+
+icon
+title
+short description
+CTA
+
+Use subtle hover animations.
+
+==================================================
+18. WHY ROD24
+==================================================
+
+Section title:
+
+"Why Ride With ROD24?"
+
+Create cards:
+
+Verified Drivers
+Transparent Pricing
+On-Time Pickup
+Live Ride Tracking
+24×7 Support
+Comfortable Vehicles
+
+Use clean icons.
+
+Add subtle animation when cards enter viewport.
+
+==================================================
+19. POPULAR ROUTES
+==================================================
+
+Create a visually attractive Popular Routes section.
+
+Heading:
+
+"Popular Routes"
+
+Subtitle:
+
+"Travel comfortably across Bihar with ROD24."
+
+Create route cards:
+
+Patna → Gaya
+Patna → Muzaffarpur
+Patna → Darbhanga
+Patna → Bhagalpur
+Saharsa → Patna
+Darbhanga → Raxaul
+Patna → Purnea
+Patna → Ara
+Patna → Hajipur
+Patna → Rajgir
+
+Each card:
+
+Origin
+Destination
+Route image/visual
+"Book this route"
+
+Clicking route should open:
+
+/routes/[slug]
+
+The route data should come from:
+
+/data/routes.json
+
+==================================================
+20. ROUTE SEO PAGES
+==================================================
+
+Each popular route should have a dedicated SEO page.
+
+Example:
+
+/routes/patna-to-gaya
+
+SEO title:
+
+"Patna to Gaya Cab Service | Book Taxi from Patna to Gaya | ROD24"
+
+Page content:
+
+H1:
+Patna to Gaya Cab Service
+
+Introduction
+Why choose ROD24
+Estimated travel information
+Cab options
+Booking form
+Popular pickup locations
+Popular drop locations
+FAQs
+
+Include structured FAQ content.
+
+Do not keyword stuff.
+
+==================================================
+21. ABOUT US
+==================================================
+
+Create premium About page.
+
+Heading:
+
+"Moving People. Connecting Places."
+
+Explain ROD24's mission:
+
+To make everyday and outstation travel comfortable, transparent and accessible.
+
+Sections:
+
+Our Story
+Our Mission
+Our Vision
+What We Believe
+Our Technology
+Our Drivers
+
+Include statistics such as:
+
+Reliable rides
+Growing driver network
+Multiple cities
+24×7 support
+
+Do not invent real company statistics.
+
+If numbers are mock/demo values, clearly structure them as configuration values that can later be replaced.
+
+==================================================
+22. TRUST / STATS SECTION
+==================================================
+
+Create animated statistics:
+
+"Comfortable Rides"
+"Verified Drivers"
+"Cities & Routes"
+"24×7 Support"
+
+Use count-up animation.
+
+Keep values configurable.
+
+==================================================
+23. HOW IT WORKS
+==================================================
+
+3 or 4 steps:
+
+1. Enter your route
+2. Choose your ride
+3. Verify your number
+4. Ride comfortably
+
+Use animated timeline/steps.
+
+==================================================
+24. TESTIMONIALS
+==================================================
+
+Create testimonial section.
+
+Use clearly marked DEMO testimonials if real customer reviews are not available.
+
+Example:
+
+"ROD24 made my journey simple and hassle-free."
+
+Do not falsely claim these are verified reviews.
+
+==================================================
+25. APP PROMOTION
+==================================================
+
+Create section:
+
+"Your Ride. Right in Your Pocket."
+
+Promote ROD24 mobile app.
+
+Buttons:
+
+Google Play
+Download App
+
+Use placeholder links if actual app URLs are not configured.
+
+Make app links configurable from:
+
+/data/siteConfig.js
+
+==================================================
+26. CONTACT PAGE
+==================================================
+
+Create full Contact page.
+
+Include:
+
+Phone
+Email
+Support
+Business enquiries
+
+Contact form:
+
+Name
+Mobile
+Email
+Message
+
+Client-side validation.
+
+Since backend isn't connected yet:
+
+Show success message and store demo submission locally or simulate submission.
+
+Do not pretend it was actually sent to a server.
+
+==================================================
+27. FOOTER
+==================================================
+
+Premium dark navy footer.
+
+Columns:
+
+ROD24
+Rides
+Popular Routes
+Company
+Support
+Legal
+
+Links:
+
+Home
+Book a Cab
+Local
+Outstation
+Airport
+Routes
+About
+Contact
+Privacy Policy
+Terms
+Cancellation Policy
+
+Include:
+
+© 2026 ROD24. All rights reserved.
+
+Social media icons.
+
+==================================================
+28. SEO
+==================================================
+
+Implement strong technical SEO.
+
+Use Next.js metadata.
+
+Create:
+
+Title
+Description
+Keywords
+Open Graph
+Twitter cards
+Canonical URLs
+
+Create:
+
+robots.txt
+
+sitemap.xml
+
+Use semantic HTML.
+
+Each route page should have unique:
+
+title
+description
+canonical URL
+
+Example:
+
+Title:
+"Patna to Gaya Cab Service | ROD24"
+
+Description:
+"Book comfortable and affordable Patna to Gaya cab services with ROD24. Choose one-way and flexible ride options."
+
+==================================================
+29. STRUCTURED DATA
+==================================================
+
+Implement JSON-LD where appropriate.
+
+Use:
+
+Organization
+LocalBusiness
+WebSite
+Service
+FAQPage
+
+Do not invent false information.
+
+Keep structured data configurable.
+
+==================================================
+30. PERFORMANCE / LOW NETWORK
+==================================================
+
+ROD24 will serve users in Bihar, including areas with slow internet.
+
+Optimize heavily for low network.
+
+Rules:
+
+- Avoid unnecessary large libraries.
+- Lazy load images.
+- Use Next.js Image.
+- Compress images.
+- Use WebP/AVIF where appropriate.
+- Avoid autoplay background video.
+- Keep hero lightweight.
+- Avoid huge JavaScript bundles.
+- Use CSS animations where sufficient.
+- Use Framer Motion only where valuable.
+- Don't load unnecessary components.
+- Keep location data local.
+- Avoid unnecessary API calls.
+- Use skeleton loading states.
+- Optimize mobile first.
+
+The homepage should still look good on a slow connection.
+
+==================================================
+31. RESPONSIVE DESIGN
+==================================================
+
+Design for:
+
+320px
+375px
+390px
+414px
+768px
+1024px
+1280px
+1440px+
+
+Mobile experience is extremely important.
+
+Booking widget must be easy to use with one hand.
+
+Buttons should be touch-friendly.
+
+Do not create tiny text.
+
+==================================================
+32. ACCESSIBILITY
+==================================================
+
+Implement:
+
+semantic HTML
+ARIA labels where required
+keyboard navigation
+visible focus states
+proper form labels
+accessible modals
+accessible buttons
+sufficient contrast
+alt text
+
+OTP modal must be keyboard accessible.
+
+==================================================
+33. ANIMATIONS
+==================================================
+
+Use premium animations.
+
+Hero:
+
+fade + slide
+floating cards
+route line animation
+location marker pulse
+
+Sections:
+
+fade-in on scroll
+staggered cards
+
+Buttons:
+
+subtle hover
+press animation
+
+Booking modal:
+
+scale + fade
+
+Success:
+
+animated check
+
+Keep animations smooth.
+
+Respect:
+
+prefers-reduced-motion
+
+Do not make the website feel like a gaming website.
+
+==================================================
+34. BOOKING STATE MANAGEMENT
+==================================================
+
+Use React state cleanly.
+
+Create reusable booking state structure:
+
+booking = {
+  tripType,
+  pickup,
+  destination,
+  date,
+  time,
+  passengers,
+  selectedCab,
+  mobile,
+  otpVerified,
+  bookingId
+}
+
+Keep booking logic separate from UI where practical.
+
+Create:
+
+/lib/booking.js
+
+for booking helper functions.
+
+==================================================
+35. MOCK DATA
+==================================================
+
+Create:
+
+/data/locations.json
+/data/routes.json
+/data/cabs.json
+/data/siteConfig.js
+/data/faqs.json
+/data/services.json
+
+Do not scatter mock data throughout components.
+
+==================================================
+36. COMPONENT STRUCTURE
+==================================================
+
+Create reusable components:
+
+Header
+MobileMenu
+Hero
+BookingWidget
+BookingTabs
+LocationSearch
+DatePicker
+TimePicker
+PassengerSelector
+CabCard
+CabList
+FareBreakdown
+MobileVerification
+OtpModal
+BookingSummary
+BookingSuccess
+ServiceCard
+PopularRouteCard
+WhyRod24
+HowItWorks
+Stats
+Testimonials
+Faq
+AppDownload
+Footer
+Modal
+Button
+Input
+Select
+
+Use reusable components instead of duplicating code.
+
+==================================================
+37. ERROR STATES
+==================================================
+
+Create proper UI for:
+
+Invalid pickup
+Invalid destination
+Same pickup and destination
+Missing date
+Missing time
+Invalid mobile
+Invalid OTP
+No cabs available
+Network error
+Unexpected error
+
+Never use browser alert().
+
+Use beautiful inline validation and modals/toasts.
+
+==================================================
+38. LOADING STATES
+==================================================
+
+When searching cabs:
+
+Show skeleton/loading state.
+
+Example:
+
+"Finding available rides..."
+
+Then show mock cab results.
+
+==================================================
+39. LOW NETWORK BOOKING UX
+==================================================
+
+If network APIs are eventually added, the architecture should support:
+
+- retry
+- timeout
+- offline state
+- reconnect
+- cached location data
+- cached static content
+
+For current demo implementation, do not create fake network requests unnecessarily.
+
+==================================================
+40. FUTURE API READY
+==================================================
+
+Important:
+
+The website must be prepared for integration with the existing ROD24 backend.
+
+Future API examples:
+
+POST /api/v1/auth/send-otp
+POST /api/v1/auth/verify-otp
+POST /api/v1/bookings
+GET /api/v1/bookings/:id
+POST /api/v1/fare-estimate
+
+Do NOT implement real APIs now.
+
+Create clean service abstraction such as:
+
+/lib/api.js
+
+so mock functions can later be replaced by real API calls.
+
+==================================================
+41. COUNTRY READY
+==================================================
+
+Although the initial website focuses on Bihar/India, do not hardcode the entire application around India.
+
+Create:
+
+/data/siteConfig.js
+
+Example:
+
+country: "IN"
+currency: "INR"
+currencySymbol: "₹"
+region: "Bihar"
+
+Structure it so Canada can later be added.
+
+Do not create separate codebases for India and Canada.
+
+==================================================
+42. SECURITY
+==================================================
+
+This is a frontend/demo implementation.
+
+Do not put:
+
+API secrets
+private keys
+database credentials
+SMS provider credentials
+
+inside frontend code.
+
+The static OTP 1234 is ONLY for demo/testing.
+
+Clearly isolate it in configuration.
+
+==================================================
+43. FINAL DESIGN DIRECTION
+==================================================
+
+The final website should feel like:
+
+Uber-level simplicity
+modern Indian mobility startup
+premium SaaS-style UI
+strong ROD24 identity
+
+But DO NOT copy any competitor's exact design.
+
+Use original layouts.
+
+Visual characteristics:
+
+Deep navy backgrounds
+white cards
+saffron CTAs
+large typography
+rounded cards
+soft shadows
+subtle gradients
+clean icons
+premium spacing
+high-quality transport imagery
+modern map visuals
+
+Avoid:
+
+excessive gradients
+overcrowded screens
+too many colors
+cheap-looking icons
+giant text on mobile
+unnecessary animations
+
+==================================================
+44. HOMEPAGE ORDER
+==================================================
+
+Build homepage in this order:
+
+1. Header
+2. Hero
+3. Booking Widget
+4. Quick Service Categories
+5. Why ROD24
+6. How It Works
+7. Popular Routes
+8. Statistics
+9. Services
+10. About ROD24
+11. Testimonials
+12. App Promotion
+13. FAQ
+14. Final CTA
+15. Footer
+
+==================================================
+45. FINAL CTA
+==================================================
+
+Create a strong final section:
+
+"Ready for your next ride?"
+
+"Book a comfortable and reliable ride with ROD24."
+
+Button:
+
+"Book a Cab"
+
+==================================================
+46. DEVELOPMENT REQUIREMENTS
+==================================================
+
+After creating the application:
+
+1. Run the application.
+2. Fix all build errors.
+3. Fix all console errors.
+4. Check all routes.
+5. Check mobile responsiveness.
+6. Test booking flow.
+7. Test invalid OTP.
+8. Test correct OTP 1234.
+9. Test same pickup/destination validation.
+10. Test empty form validation.
+11. Test mobile navigation.
+12. Test route pages.
+13. Test SEO metadata.
+14. Test loading states.
+15. Test 404 page.
+16. Make sure there are NO TypeScript files.
+17. Make sure the application builds successfully.
+
+==================================================
+47. IMPORTANT REPLIT INSTRUCTION
+==================================================
+
+Do not stop after creating the homepage.
+
+Build the COMPLETE application.
+
+If an external image/API is unavailable, use a high-quality local placeholder or CSS-based visual rather than leaving broken images.
+
+If a feature cannot be connected to a backend yet, create a realistic mock implementation and clearly isolate it so it can later be replaced by the real ROD24 API.
+
+Prioritize:
+
+1. Working functionality
+2. Clean UX
+3. Mobile responsiveness
+4. Performance
+5. SEO
+6. Visual quality
+7. Maintainable architecture
+
+The final result should look like a real commercial ROD24 website ready for user testing.
