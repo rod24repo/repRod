@@ -1,5 +1,8 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
-import { Link, Route, Switch, useLocation } from 'wouter';
+import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   AlertCircle, ArrowRight, Building2, CalendarDays, CarFront, Check, ChevronDown, ChevronLeft,
@@ -62,7 +65,7 @@ function Logo({ compact = false }) {
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const [location] = useLocation();
+  const location = usePathname() || '/';
   return <header className="sticky top-0 z-30 border-b border-[#dfe1e8] bg-[#fffaf0]/95 backdrop-blur-md">
     <div className="page-wrap flex h-[72px] items-center justify-between gap-5">
       <Logo />
@@ -124,7 +127,7 @@ function LocationField({ label, value, onChange, placeholder, icon: Icon = MapPi
 }
 
 function BookingWidget({ compact = false }) {
-  const [, setLocation] = useLocation();
+  const router = useRouter();
   const [tab, setTab] = useState('local');
   const [pickup, setPickup] = useState('');
   const [destination, setDestination] = useState('');
@@ -135,7 +138,7 @@ function BookingWidget({ compact = false }) {
     e.preventDefault();
     if (!pickup.trim() || !destination.trim()) { setError('Add both a pickup and destination to see your ride options.'); return; }
     if (pickup.trim().toLowerCase() === destination.trim().toLowerCase()) { setError('Pickup and destination need to be different places.'); return; }
-    setLocation(`/book?pickup=${encodeURIComponent(pickup)}&destination=${encodeURIComponent(destination)}&trip=${tab}`);
+    router.push(`/book?pickup=${encodeURIComponent(pickup)}&destination=${encodeURIComponent(destination)}&trip=${tab}`);
   };
   return <form onSubmit={submit} className={`relative rounded-2xl border border-[#dedfe5] bg-[#fffaf0] p-4 shadow-float ${compact ? '' : 'sm:p-6'}`} data-testid="form-booking-widget">
     <div className="mb-5 flex items-center justify-between"><div><p className="text-xs font-bold uppercase tracking-[.12em] text-[#3c897f]">Start here</p><h2 className="mt-1 font-display text-xl font-bold text-[#252a4b]">Where are you headed?</h2></div><div className="rounded-full bg-[#eef0f6] p-2 text-[#252a4b]"><Navigation size={18} /></div></div>
@@ -157,13 +160,13 @@ function Home() {
       <div className="page-wrap relative grid min-h-[620px] items-center gap-12 py-14 lg:grid-cols-[1fr_440px] lg:py-20">
         <div className="pointer-events-none absolute -right-32 -top-40 h-[470px] w-[470px] rounded-full border-[70px] border-[#f7a33b]/20" />
         <div className="relative z-10">
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c8ddd9] bg-[#eff7f3] px-3 py-2 text-xs font-bold text-[#34776f]"><span className="h-2 w-2 rounded-full bg-[#3c897f]" /> Now riding across 18 Bihar cities</motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08 }} className="max-w-[720px] font-display text-[clamp(3rem,7vw,6.5rem)] font-bold leading-[.92] tracking-[-.07em] text-[#252a4b]">Bihar, <span className="text-[#e58d26]">on your terms.</span></motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .16 }} className="mt-7 max-w-lg text-lg leading-8 text-[#626579]">From the morning commute to the long way home. ROD24 brings comfortable cars, honest fares and drivers who know the road.</motion.p>
+          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c8ddd9] bg-[#eff7f3] px-3 py-2 text-xs font-bold text-[#34776f]"><span className="h-2 w-2 rounded-full bg-[#3c897f]" /> Now riding across 18 Bihar cities</motion.div>
+          <motion.h1 initial={false} animate={{ opacity: 1, y: 0 }} className="max-w-[720px] font-display text-[clamp(3rem,7vw,6.5rem)] font-bold leading-[.92] tracking-[-.07em] text-[#252a4b]">Bihar, <span className="text-[#e58d26]">on your terms.</span></motion.h1>
+          <motion.p initial={false} animate={{ opacity: 1 }} className="mt-7 max-w-lg text-lg leading-8 text-[#626579]">From the morning commute to the long way home. ROD24 brings comfortable cars, honest fares and drivers who know the road.</motion.p>
           <div className="mt-8 flex flex-wrap items-center gap-4"><Link href="/book" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#252a4b] px-5 py-3 text-sm font-bold text-[#fffaf0] shadow-float transition-smooth hover:bg-[#30365d]" data-testid="link-hero-book">Book your ride <ArrowRight size={17} /></Link><Link href="/routes" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold text-[#252a4b]" data-testid="link-hero-routes">Explore routes <ChevronDown size={16} /></Link></div>
           <div className="mt-12 flex items-center gap-3 text-xs font-semibold text-[#74788c]"><div className="flex -space-x-2">{['AS', 'PM', 'RK'].map((initials) => <span key={initials} className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#fffaf0] bg-[#d8e7e2] text-[10px] text-[#252a4b]">{initials}</span>)}</div><span>Trusted by 12,000+ riders in Bihar</span></div>
         </div>
-        <motion.div initial={{ opacity: 0, x: 25 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .12 }} className="relative z-10"><BookingWidget /></motion.div>
+        <motion.div initial={false} animate={{ opacity: 1, x: 0 }} className="relative z-10"><BookingWidget /></motion.div>
       </div>
     </section>
     <section className="page-wrap -mt-1 py-8"><TrustStrip /></section>
@@ -191,8 +194,8 @@ function BookingPage() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('09:30');
   const [routeError, setRouteError] = useState('');
-  const [query] = useLocation();
-  const searchParams = useMemo(() => new URLSearchParams(query.split('?')[1] || ''), [query]);
+  const queryParams = useSearchParams();
+  const searchParams = useMemo(() => new URLSearchParams(queryParams?.toString() || ''), [queryParams]);
   const [from, setFrom] = useState(searchParams.get('pickup') || '');
   const [to, setTo] = useState(searchParams.get('destination') || '');
   const chosen = cabs.find((cab) => cab.id === selected) || cabs[0];
@@ -269,22 +272,28 @@ function NotFound() {
 }
 
 function Router() {
-  return <Switch>
-    <Route path="/" component={Home} />
-    <Route path="/book" component={BookingPage} />
-    <Route path="/rides" component={RidesPage} />
-    <Route path="/outstation"><ServicePage type="outstation" /></Route>
-    <Route path="/airport"><ServicePage type="airport" /></Route>
-    <Route path="/local"><ServicePage type="local" /></Route>
-    <Route path="/routes" component={RoutesPage} />
-    {Object.keys(routeData).map((slug) => <Route key={slug} path={`/routes/${slug}`}><RouteDetail slug={slug} /></Route>)}
-    <Route path="/about" component={AboutPage} />
-    <Route path="/contact" component={ContactPage} />
-    <Route path="/terms"><PolicyPage type="terms" /></Route>
-    <Route path="/privacy"><PolicyPage type="privacy" /></Route>
-    <Route path="/cancellation-policy"><PolicyPage type="cancellation-policy" /></Route>
-    <Route component={NotFound} />
-  </Switch>;
+  const pathname = usePathname() || '/';
+  const cleanPathname = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname;
+
+  if (cleanPathname === '/') return <Home />;
+  if (cleanPathname === '/book') return <BookingPage />;
+  if (cleanPathname === '/rides') return <RidesPage />;
+  if (cleanPathname === '/outstation') return <ServicePage type="outstation" />;
+  if (cleanPathname === '/airport') return <ServicePage type="airport" />;
+  if (cleanPathname === '/local') return <ServicePage type="local" />;
+  if (cleanPathname === '/routes') return <RoutesPage />;
+  if (cleanPathname === '/about') return <AboutPage />;
+  if (cleanPathname === '/contact') return <ContactPage />;
+  if (cleanPathname === '/terms') return <PolicyPage type="terms" />;
+  if (cleanPathname === '/privacy') return <PolicyPage type="privacy" />;
+  if (cleanPathname === '/cancellation-policy') return <PolicyPage type="cancellation-policy" />;
+
+  if (cleanPathname.startsWith('/routes/')) {
+    const slug = decodeURIComponent(cleanPathname.slice('/routes/'.length));
+    return routeData[slug] ? <RouteDetail slug={slug} /> : <NotFound />;
+  }
+
+  return <NotFound />;
 }
 
 export default function App() {

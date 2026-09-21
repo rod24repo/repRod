@@ -9,5 +9,6 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true
   },
-  "include": ["src/**/*.js", "src/**/*.jsx", "vite.config.js"]
+  "include": ["src/**/*.js", "next.config.js", "postcss.config.mjs"],
+  "exclude": ["node_modules", ".next"]
 }
